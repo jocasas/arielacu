@@ -3,10 +3,14 @@ import Image from "next/image";
 import { useState, useEffect, use } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faFacebook, faTiktok } from '@fortawesome/free-brands-svg-icons';
+import EmailForm from "./EmailForm";
+import ScrollToTop from "./ScrollToTop";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [prevSlide, setPrevSlide] = useState(0); // Track previous slide for animation direction
+  const [isAnimating, setIsAnimating] = useState(false);
 
   /*   const slides = [
       { title: "NUESTRO PROGRAMA", subtitle: "Conozca nuestros planes", image: "/background1.jpg" },
@@ -27,11 +31,18 @@ export default function Home() {
 
   useEffect(() => {
     const slideInterval = setInterval(() => {
-      setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
-    }, 5000); //5s
+      setIsAnimating(true);
+      setTimeout(() => {
+        setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
+        setIsAnimating(false);
+      }, 1000); // Match this to the animation duration (1s)
+    }, 5000); // Slide every 5 seconds
+
     return () => clearInterval(slideInterval);
   }, [slides.length]);
 
+  // Calculate the next slide index
+  const nextSlide = (currentSlide + 1) % slides.length;
   return (
     <div className="min-h-screen bg-zinc-800">
       {/* Header */}
@@ -54,22 +65,40 @@ export default function Home() {
         </div>
       </div> */}
 
-      <div className="relative h-[500px] bg-cover bg-center transition-all duration-1000 ease-in-out">
-        <div className="absolute inset-0 opacity-100">
-          {/* Optimized Image Component */}
-          <div className="relative z-0 h-full w-full">
-            <Image
-              src={slides[currentSlide].imageUrl}
-              alt={slides[currentSlide].title}
-              fill={true}
-              priority // Prioritize loading
-            />
-            <div className="text-center relative z-10 flex flex-col items-center justify-center h-full text-white">
-              <h1 className="text-3xl font-bold">{slides[currentSlide].title}</h1>
-            </div>
+      <div className="relative h-[500px] overflow-hidden">
+        {/* Current Slide */}
+        <div
+          className={`absolute inset-0 h-full w-full transition-all duration-1000 ease-in-out ${isAnimating ? 'animate-slideOutLeft' : ''
+            }`}
+        >
+          <Image
+            src={slides[currentSlide].imageUrl}
+            alt={slides[currentSlide].title}
+            fill={true}
+            priority
+            className="object-cover"
+          />
+          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40">
+            <h1 className="text-3xl font-bold text-white">{slides[currentSlide].title}</h1>
           </div>
         </div>
 
+        {/* Next Slide */}
+        <div
+          className={`absolute inset-0 h-full w-full transition-all duration-1000 ease-in-out ${isAnimating ? 'animate-slideLeft' : 'hidden'
+            }`}
+        >
+          <Image
+            src={slides[nextSlide].imageUrl}
+            alt={slides[nextSlide].title}
+            fill={true}
+            priority
+            className="object-cover"
+          />
+          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40">
+            <h1 className="text-3xl font-bold text-white">{slides[nextSlide].title}</h1>
+          </div>
+        </div>
       </div>
 
       {/* Social Media Section */}
@@ -209,9 +238,12 @@ export default function Home() {
       {/* Contacto */}
 
       <section id="contact" className="">
-      <div className="bg-orange-50 opacity-100">
+        <div className="bg-orange-50 opacity-100">
           <div className="pt-4 pb-2 relative z-10 flex flex-col items-center justify-center h-full text-white">
             <h1 className="text-3xl font-bold text-orange-500">CONTACTO</h1>
+          </div>
+          <div>
+            <EmailForm />
           </div>
         </div>
       </section>
@@ -230,8 +262,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Header Burger Menu Options */}
-
+      {/*flecha pa arria*/}
+      <ScrollToTop />
     </div>
   );
 }
