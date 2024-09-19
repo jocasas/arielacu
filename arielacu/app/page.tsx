@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faFacebook, faTiktok } from '@fortawesome/free-brands-svg-icons';
 import EmailForm from "./EmailForm";
 import ScrollToTop from "./ScrollToTop";
+import Carousel from "./Carousel";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -18,10 +19,61 @@ export default function Home() {
       { title: "INNOVACIÓN Y FUTURO", subtitle: "Ideas para el futuro", image: "/background3.jpg" }
     ]; */
 
-  const slides = [
+  // Slides principal
+    const slides = [
     { title: 'HAZ MATCH CON TU ESTACION', imageUrl: '/fotos_carusel/ariel1.png' },
     { title: 'NUESTRO PROGRAMA', imageUrl: '/fotos_carusel/arielfamilia1.jpg' },
     { title: 'MOTIVACIONES', imageUrl: '/fotos_carusel/ariel2345.jpg' },
+  ];
+
+
+  // Como los otros carouseles son similares pero tienen otra funcion utilizaremos
+  // un componente para no repetir html
+  const carousel1 = [
+    { title: 'HAZ MATCH CON TU ESTACION', imageUrl: '/fotos_secciones/HISTORIA001.png' },
+    { title: 'NUESTRO PROGRAMA', imageUrl: '/fotos_secciones/HISTORIA002.png' },
+    { title: 'MOTIVACIONES', imageUrl: '/fotos_secciones/HISTORIA003.png' },
+    { title: 'MOTIVACIONES', imageUrl: '/fotos_secciones/historia2.jpg' },
+    { title: 'MOTIVACIONES', imageUrl: '/fotos_secciones/HISTORIA004.png' },
+    { title: 'MOTIVACIONES', imageUrl: '/fotos_secciones/HISTORIA005.png' },
+  ];
+
+  const carousel2 = [
+    { title: 'OPORTUNIDADES', imageUrl: '/fotos_secciones/NUESTROPROGRAMA001.png' },
+    { title: 'NUESTRO COMPROMISO', imageUrl: '/fotos_secciones/NUESTROPROGRAMA002.png' },
+    { title: 'FUTURO', imageUrl: '/fotos_secciones/NUESTROPROGRAMA003.png' },
+    { title: 'FUTURO', imageUrl: '/fotos_secciones/NUESTROPROGRAMA004.png' },
+    { title: 'FUTURO', imageUrl: '/fotos_secciones/NUESTROPROGRAMA006.png' },
+    { title: 'FUTURO', imageUrl: '/fotos_secciones/NEUSTROPROGRAMA007.png' },
+  ];
+
+  const carousel3 = [
+    { title: 'INNOVACION', imageUrl: '/fotos_secciones/MOTIVACIONES001.png' },
+    { title: 'CALIDAD', imageUrl: '/fotos_secciones/MOTIVACIONES002.png' },
+    { title: 'SERVICIOS', imageUrl: '/fotos_secciones/MOTIVACIONES003.png' },
+    { title: 'SERVICIOS', imageUrl: '/fotos_secciones/MOTIVACIONES004.png' },
+    { title: 'SERVICIOS', imageUrl: '/fotos_secciones/MOTIVACIONES005.png' },
+    { title: 'SERVICIOS', imageUrl: '/fotos_secciones/MOTIVACIONES006.png' },
+    { title: 'SERVICIOS', imageUrl: '/fotos_secciones/MOTIVACIONES007.png' },
+  ];
+
+  const carousel4 = [
+    { title: 'HAZ MATCH CON TU ESTACION', imageUrl: '/fotos_secciones/QUESEHALOGRADO.png' },
+    { title: 'NUESTRO PROGRAMA', imageUrl: '/fotos_secciones/QUESEHALOGRADO001.png' },
+    { title: 'MOTIVACIONES', imageUrl: '/fotos_secciones/QUESEHALOGRADO002.png' },
+    { title: 'MOTIVACIONES', imageUrl: '/fotos_secciones/QUESEHALOGRADO003.png' },
+    { title: 'MOTIVACIONES', imageUrl: '/fotos_secciones/QUESEHALOGRADO004.png' },
+    { title: 'MOTIVACIONES', imageUrl: '/fotos_secciones/QUESEHALOGRADO005.png' },
+    { title: 'MOTIVACIONES', imageUrl: '/fotos_secciones/QUESEHALOGRADO006.png' },
+    { title: 'MOTIVACIONES', imageUrl: '/fotos_secciones/QUESEHALOGRADO007.png' },
+  ];
+
+  const carousel5 = [
+    { title: 'HAZ MATCH CON TU ESTACION', imageUrl: '/fotos_secciones/AGRADECIMIENTOS001.png' },
+    { title: 'NUESTRO PROGRAMA', imageUrl: '/fotos_secciones/AGRADECIMIENTOS002.png' },
+    { title: 'MOTIVACIONES', imageUrl: '/fotos_secciones/AGRADECIMIENTOS003.png' },
+    { title: 'MOTIVACIONES', imageUrl: '/fotos_secciones/AGRADECIMIENTOS004.png' },
+  
   ];
 
 
@@ -105,7 +157,7 @@ export default function Home() {
       <div className="relative bg-zinc-800 p-4 text-center">
         <h3 className="text-white mb-2">¡SÍGUEME EN MIS REDES!</h3>
         <div className="flex justify-center space-x-4 text-white text-3xl">
-          <a href="https://www.instagram.com" aria-label="Instagram">
+          <a href="https://www.instagram.com/arielacunacerda/" aria-label="Instagram">
             <FontAwesomeIcon icon={faInstagram} className="text-white h-6 w-6 hover:text-gray-400" />
           </a>
           <a href="https://www.tiktok.com" aria-label="Tiktok">
@@ -141,16 +193,25 @@ export default function Home() {
           <div className="pt-4 pb-2 relative z-10 flex flex-col items-center justify-center h-full text-white">
             <h1 className="text-3xl font-bold">CONOCE MI HISTORIA</h1>
           </div>
-          <div className="ml-12 mr-12 text-justify pt-2 pb-4 justify-normal">
-            <p>Durante mis 6 años de dirigencia
-              social ha despertado un profundo
-              compromiso por el servicio publico.</p>
+          <div className="ml-12 mr-12 pt-2 pb-4 justify-normal">
+            <p>Durante mis años como dirigente social, he forjado un fuerte compromiso con el servicio público. He trabajado incansablemente para mejorar la calidad de vida de mis vecinos en Estación Central, siempre con la convicción de que el servicio público es la clave para construir una sociedad más justa y solidaria. Hoy, con más de 7 años de experiencia en labores comunitarias, me presento como candidato a concejal con la esperanza de seguir contribuyendo al bienestar de nuestra comuna.</p>
           </div>
-          <div className="relative h-[350px]">
-            <Image src="/fotos_secciones/historia2.JPG" alt="notfoundimg" fill={true} />
+          <div className="relative ">
+          <Carousel slides={carousel1}/>
           </div>
-          <div className="ml-10 mr-10 pt-4 pb-4 text-justify">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+
+          <div className="ml-10 mr-10 pt-4 pb-4  ">
+            <p>Soy Ariel Acuña, hijo de una familia tradicional chilena, de clase media esforzada y sacrificada. Desde pequeño, mis padres me inculcaron valores como la humildad, la gratitud y la disciplina, lecciones que han marcado cada aspecto de mi vida personal y profesional.
+            </p>
+            <br></br>
+            <p>Ingeniero en Marketing, titulado del Instituto Profesional Duoc UC, donde aprendí a ver más allá de los números y las estrategias, enfocándome siempre en el impacto humano y social de cada proyecto que llevo adelante. Esta formación me ha ayudado a desarrollar habilidades analíticas y de gestión claves para mis proyectos y desafíos.
+            </p>
+            <br></br>
+            <p>Durante más de 7 años me he dedicado a actividades de labor social, siendo dirigente vecinal y participando activamente en proyectos que buscan crear un impacto en la vida de mis vecinos de Estación Central. He trabajado en múltiples iniciativas, desde la organización de eventos comunitarios hasta la gestión de recursos para solucionar problemas barriales.
+            </p>
+            <br></br>
+            <p>Como persona, valoro profundamente la honestidad, la comprensión y la empatía, cualidades que considero imprescindibles para liderar con responsabilidad y humanidad. Mi vocación de servicio público está marcada por mi capacidad de resolver problemas, siempre dispuesto a escuchar y trabajar en conjunto con quienes me rodean.
+            </p>
           </div>
         </div>
 
@@ -162,14 +223,36 @@ export default function Home() {
           <div className="pt-4 pb-2 relative z-10 flex flex-col items-center justify-center h-full text-white">
             <h1 className="text-3xl font-bold text-black">NUESTRO PROGRAMA</h1>
           </div>
-          <div className="ml-12 mr-12 text-justify pt-2 pb-4 justify-normal">
-            <p className="text-black">Mi bandera de lucha es trabajar por un proyecto que potencie las organizaciones territoriales, la cohesión entre vecinos, sus organizaciones y su relación con el Municipio.</p>
+          <div className="ml-12 mr-12   pt-2 pb-4 justify-normal">
+            <p className="text-black">Mi bandera de lucha es trabajar por un proyecto que potencie las organizaciones territoriales, la cohesión entre vecinos, sus organizaciones y su relación con el municipio.</p>
           </div>
-          <div className="relative h-[350px]">
-            <Image src="/fotos_secciones/historia2.JPG" alt="notfoundimg" fill={true} />
+          <div className="relative">
+          <Carousel slides={carousel2}/>
           </div>
-          <div className="text-black ml-10 mr-10 pt-4 pb-4 text-justify">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+          <div className="text-black ml-10 mr-10 pt-4 pb-4  ">
+            <p>Como candidato a concejal, mi compromiso es promover el desarrollo integral de la comuna de Estación Central, a través de acciones concretas en diversas áreas:</p>
+            <br></br>
+            <p><strong>Normar, resolver y fiscalizar</strong></p>
+            <br></br>
+            <p>Una de mis principales responsabilidades será fiscalizar de manera rigurosa la administración municipal para asegurar la transparencia y eficiencia en la gestión de recursos. Mi participación no solo será de carácter fiscalizador, sino también consultivo y propositivo, proponiendo mejoras y soluciones a las necesidades de la comunidad.
+            </p>
+            <br></br>
+            <p>Me compreto a impulsar el desarrollo de proyectos en areas fundamentales.</p>
+            <br></br>
+            <p><strong>Salud:</strong> Fomentar la Mejora en la calidad de vida promoviendo una vida sana, actividades en pos de la salud mental y el bienestar comunitario.</p>
+            <br></br>
+            <p><strong>Infraestructura y Urbanismo:</strong> Fiscalización de obras públicas importantes, como la remodelación de la RUTA 68, el Canal Ortuzano, el Proyecto Sitio Eriazo Av. Oceánica, entre otros. </p>
+            <br></br>
+            <p><strong>Deporte y Juventudes:</strong> Apoyar a las juventudes mediante programas como torneos deportivos y la vinculación de estudiantes de la USACH en organizaciones territoriales.
+            </p>
+            <br></br>
+            <p><strong>Compromiso con la Comunidad:</strong> Creo en el poder de las comunidades organizadas, por lo que fomentaré la creación de organizaciones sin fines de lucro y el desarrollo de un Fondo de inicio para organizaciones territoriales. Además, trabajaré para fomentar la tecnologización de las Juntas de Vecinos y otros servicios municipales, transformando a estas instituciones en Unidades vecinales de carácter público que estén alineadas con las necesidades del siglo XXI.
+            </p>
+            <br></br>
+            <p><strong>Trabajo con Transparencia y Dedicación:</strong> Mi compromiso es total. De salir electo como concejal, me dedicaré exclusivamente a la gestión municipal como trabajo a tiempo completo. Seré un representante cercano, sincero y proactivo, dispuesto a escuchar y actuar en beneficio de todos los centralinos.
+            </p>
+            <br></br>
+            <p>Este programa refleja mi visión de un municipio más transparente, comprometido con el bienestar de su gente, y preparado para enfrentar los desafíos del futuro con soluciones reales y concretas hoy.</p>
           </div>
         </div>
       </section>
@@ -181,11 +264,16 @@ export default function Home() {
           <div className="pt-4 pb-2 relative z-10 flex flex-col items-center justify-center h-full text-white">
             <h1 className="text-3xl font-bold text-black">MOTIVACIONES</h1>
           </div>
-          <div className="ml-12 mr-12 text-justify pt-2 pb-4 justify-normal">
-            <p className="text-black">Mi mayor motivación para ser concejal es cumplir con mi vocación al servicio público, aportar mi granito de arena y dejar una huella positiva en la comuna que me ha visto crecer.</p>
+          <div className="ml-12 mr-12   pt-2 pb-4 justify-normal">
+            <p className="text-black">Mi mayor motivación para ser concejal es cumplir con mi vocación al servicio público, aportar mi granito de arena y dejar una huella positiva en la comuna que me ha visto crecer. 
+            </p>
           </div>
-          <div className="relative h-[350px]">
-            <Image src="/fotos_secciones/historia2.JPG" alt="notfoundimg" fill={true} />
+          <div className="relative">
+          <Carousel slides={carousel3}/> 
+          </div>
+          <div className="text-black ml-10 mr-10 pt-4 pb-4  ">
+          <p>Quiero aportar con mi experiencia y la formación que he desarrollado tanto en el sector privado como en el rol de dirigente. Mi objetivo es aportar y promover  la profesionalización del municipio, desde el Concejo Municipal. 
+          </p>
           </div>
         </div>
       </section>
@@ -197,11 +285,11 @@ export default function Home() {
           <div className="pt-4 pb-2 relative z-10 flex flex-col items-center justify-center text-center h-full text-white">
             <h1 className="text-3xl font-bold">QUE SE HA LOGRADO HASTA AHORA</h1>
           </div>
-          <div className="ml-12 mr-12 text-justify pt-2 pb-4 justify-normal">
-            <p className="">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+          <div className="ml-12 mr-12   pt-2 pb-4 justify-normal">
+            <p className="">En mi rol como dirigente vecinal, he podido impulsar una serie de actividades deportivas, culturales, de seguridad y actividades para ayudar a vecinas y vecinos.</p>
           </div>
-          <div className="relative h-[350px]">
-            <Image src="/fotos_secciones/historia2.JPG" alt="notfoundimg" fill={true} />
+          <div className="relative">   
+                   <Carousel slides={carousel4}/>
           </div>
         </div>
       </section>
@@ -210,16 +298,16 @@ export default function Home() {
 
       <section id="contribute" className="">
         <div className="bg-orange-500 opacity-100">
-          <div className="ml-12 mr-12 text-justify pt-2 pb-4 justify-normal">
-            <p className="mt-8">Si compartes mi visión de que la política necesita la energía , voluntad y actitud de jóvenes profesionales con vocación, te invito a ser parte de esta historia.</p>
+          <div className="ml-12 mr-12   pt-2 pb-4 justify-normal">
+            <p className="mt-8">Si compartes mi visión de que la política necesita la energía, voluntad y actitud de jóvenes profesionales con vocación, te invito a ser parte de esta historia.</p>
           </div>
           <div className="flex justify-center items-center pt-6 pb-6">
             <button className="bg-purple-600 text-white font-bold py-8 px-20 rounded hover:bg-purple-700 text-2xl">
               ¡CONTRIBUYE!
             </button>
           </div>
-          <div className="ml-12 mr-12 text-justify pt-2 pb-8 justify-normal">
-            <p>Si compartes mi visión de que la política necesita la energía , voluntad y actitud de jóvenes profesionales con vocación, te invito a ser parte de esta historia.</p>
+          <div className="ml-12 mr-12   pt-2 pb-8 justify-normal">
+            <p>Si confías en mi proyecto y trabajo, te invito a que me apoyes donando a mi candidatura o interactuando en mis redes sociales.</p>
           </div>
         </div>
       </section>
@@ -242,6 +330,12 @@ export default function Home() {
           <div className="pt-4 pb-2 relative z-10 flex flex-col items-center justify-center h-full text-white">
             <h1 className="text-3xl font-bold text-orange-500">CONTACTO</h1>
           </div>
+          <div className="ml-10 mr-10   pt-2 pb-8 justify-center flex flex-col items-center text-black">
+            <br></br>
+            <p>Si quieres conocer más de mi candidatura, ayudar en la entrega de volantes o necesitas saber más, no dudes en escribirme:</p>
+            <br></br>
+            <p><strong>WSP: +569 4475 17814</strong></p>
+          </div>
           <div>
             <EmailForm />
           </div>
@@ -256,7 +350,10 @@ export default function Home() {
           <div className="pt-4 pb-2 relative z-10 flex flex-col items-center justify-center h-full text-white">
             <h1 className="text-3xl font-bold text-white">AGRADECIMIENTOS</h1>
           </div>
-          <div className="ml-8 mr-8 text-justify pt-2 pb-8 justify-normal">
+          <div>
+            <Carousel slides={carousel5}/>            
+          </div>
+          <div className="ml-8 mr-8   pt-2 pb-8 justify-normal">
             <p>Porque este camino no se camina solo, les agradezco infinitamente a todos los que han dedicado tiempo y energía y en especial a mi equipo, que juntos estamos comprometidos a mejorar la calidad de vida de los centralinos y centralinas.</p>
           </div>
         </div>
