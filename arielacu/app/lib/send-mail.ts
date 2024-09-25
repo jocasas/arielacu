@@ -30,6 +30,10 @@ export async function sendMail({
 }) {
     try {
         const isVerified = await transporter.verify();
+        if (isVerified) {
+            // Prevent not usage / needed but not used
+            console.log("User is verified.");
+        }
     } catch (error) {
         console.error('Something Went Wrong', SMTP_SERVER_USERNAME, SMTP_SERVER_PASSWORD, error);
         return;

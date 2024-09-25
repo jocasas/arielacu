@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image";
-import { useState, useEffect, use } from 'react';
+import { useState, useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faFacebook, faTiktok } from '@fortawesome/free-brands-svg-icons';
 import EmailForm from "./EmailForm";
@@ -10,6 +10,7 @@ import Carousel from "./Carousel";
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [prevSlide, setPrevSlide] = useState(0); // Track previous slide for animation direction
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -100,7 +101,7 @@ export default function Home() {
       {/* Header */}
       <header className="relative bg-orange-600 text-white flex justify-between items-center p-4 w-full z-20">
         <div className="flex items-center">
-          <img src="/ISOLOGO_ARIEL_ACUÑA_09.png" alt="Logo" className="w-50 h-10" />
+          <Image src="/ISOLOGO_ARIEL_ACUÑA_09.png" alt="Logo" width={105} height={105} className="w-auto h-auto"/>
         </div>
         <button onClick={toggleMenu} className="text-3xl">
           &#9776; {/* Hamburger icon */}
@@ -128,6 +129,7 @@ export default function Home() {
             alt={slides[currentSlide].title}
             fill={true}
             priority
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover"
           />
           <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40">
@@ -137,7 +139,7 @@ export default function Home() {
 
         {/* Next Slide */}
         <div
-          className={`absolute inset-0 h-full w-full transition-all duration-1000 ease-in-out ${isAnimating ? 'animate-slideLeft' : 'hidden'
+          className={`absolute inset-0 h-full w-full transition-all duration-1000 ease-in-out ${isAnimating ? 'anie3mate-slideLeft' : 'hidden'
             }`}
         >
           <Image
@@ -145,6 +147,7 @@ export default function Home() {
             alt={slides[nextSlide].title}
             fill={true}
             priority
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover"
           />
           <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40">
@@ -160,10 +163,10 @@ export default function Home() {
           <a href="https://www.instagram.com/arielacunacerda/" aria-label="Instagram">
             <FontAwesomeIcon icon={faInstagram} className="text-white h-6 w-6 hover:text-gray-400" />
           </a>
-          <a href="https://www.tiktok.com" aria-label="Tiktok">
+          <a href="https://www.tiktok.com/@arielacunacerda" aria-label="Tiktok">
             <FontAwesomeIcon icon={faTiktok} className="text-white h-6 w-6 hover:text-gray-400" />
           </a>
-          <a href="https://www.facebook.com" aria-label="Facebook">
+          <a href="https://www.facebook.com/profile.php?id=61565480699944" aria-label="Facebook">
             <FontAwesomeIcon icon={faFacebook} className="text-white h-6 w-6 hover:text-gray-400" />
           </a>
         </div>
@@ -172,14 +175,12 @@ export default function Home() {
       {/* Header Burger Menu Options */}
       {menuOpen && (
         <div className={`absolute w-full top-[60px] bg-purple-700 bg-opacity-80 p-4 transition-all duration-500 ease-in-out ${menuOpen ? 'max-h-screen' : 'max-h-0 overflow-hidden'}`}>
-          <button onClick={toggleMenu} className="text-white text-3xl absolute top-4 right-4 z-30">&times;</button>
-          <nav className="flex flex-col items-center justify-center text-white space-y-6">
+          <nav className="flex flex-col items-center justify-center text-white space-y-8">
             <a href="#history" className="block hover:bg-gray-600 p-2 rounded transition-colors">Conoce mi historia</a>
             <a href="#program" className="block hover:bg-gray-600 p-2 rounded transition-colors">Nuestro Programa</a>
             <a href="#motivations" className="block hover:bg-gray-600 p-2 rounded transition-colors">Motivaciones</a>
             <a href="#achievements" className="block hover:bg-gray-600 p-2 rounded transition-colors">Que se ha logrado</a>
             <a href="#contribute" className="block hover:bg-gray-600 p-2 rounded transition-colors">Contribuye</a>
-            <a href="#gallery" className="block hover:bg-gray-600 p-2 rounded transition-colors">Galería</a>
             <a href="#contact" className="block hover:bg-gray-600 p-2 rounded transition-colors">Contacto</a>
             <a href="#thanks" className="block hover:bg-gray-600 p-2 rounded transition-colors">Agradecimientos</a>
           </nav>
@@ -193,14 +194,14 @@ export default function Home() {
           <div className="pt-4 pb-2 relative z-10 flex flex-col items-center justify-center h-full text-white">
             <h1 className="text-3xl font-bold">CONOCE MI HISTORIA</h1>
           </div>
-          <div className="ml-12 mr-12 pt-2 pb-4 justify-normal">
+          <div className="ml-12 mr-12 pt-2 pb-4 justify-normal text-justify">
             <p>Durante mis años como dirigente social, he forjado un fuerte compromiso con el servicio público. He trabajado incansablemente para mejorar la calidad de vida de mis vecinos en Estación Central, siempre con la convicción de que el servicio público es la clave para construir una sociedad más justa y solidaria. Hoy, con más de 7 años de experiencia en labores comunitarias, me presento como candidato a concejal con la esperanza de seguir contribuyendo al bienestar de nuestra comuna.</p>
           </div>
           <div className="relative ">
           <Carousel slides={carousel1}/>
           </div>
 
-          <div className="ml-10 mr-10 pt-4 pb-4  ">
+          <div className="ml-10 mr-10 pt-4 pb-4  text-justify">
             <p>Soy Ariel Acuña, hijo de una familia tradicional chilena, de clase media esforzada y sacrificada. Desde pequeño, mis padres me inculcaron valores como la humildad, la gratitud y la disciplina, lecciones que han marcado cada aspecto de mi vida personal y profesional.
             </p>
             <br></br>
@@ -224,12 +225,12 @@ export default function Home() {
             <h1 className="text-3xl font-bold text-black">NUESTRO PROGRAMA</h1>
           </div>
           <div className="ml-12 mr-12   pt-2 pb-4 justify-normal">
-            <p className="text-black">Mi bandera de lucha es trabajar por un proyecto que potencie las organizaciones territoriales, la cohesión entre vecinos, sus organizaciones y su relación con el municipio.</p>
+            <p className="text-black text-justify">Mi bandera de lucha es trabajar por un proyecto que potencie las organizaciones territoriales, la cohesión entre vecinos, sus organizaciones y su relación con el municipio.</p>
           </div>
           <div className="relative">
           <Carousel slides={carousel2}/>
           </div>
-          <div className="text-black ml-10 mr-10 pt-4 pb-4  ">
+          <div className="text-black ml-10 mr-10 pt-4 pb-4  text-justify">
             <p>Como candidato a concejal, mi compromiso es promover el desarrollo integral de la comuna de Estación Central, a través de acciones concretas en diversas áreas:</p>
             <br></br>
             <p><strong>Normar, resolver y fiscalizar</strong></p>
@@ -264,14 +265,14 @@ export default function Home() {
           <div className="pt-4 pb-2 relative z-10 flex flex-col items-center justify-center h-full text-white">
             <h1 className="text-3xl font-bold text-black">MOTIVACIONES</h1>
           </div>
-          <div className="ml-12 mr-12   pt-2 pb-4 justify-normal">
+          <div className="ml-12 mr-12   pt-2 pb-4 justify-normal text-justify">
             <p className="text-black">Mi mayor motivación para ser concejal es cumplir con mi vocación al servicio público, aportar mi granito de arena y dejar una huella positiva en la comuna que me ha visto crecer. 
             </p>
           </div>
           <div className="relative">
           <Carousel slides={carousel3}/> 
           </div>
-          <div className="text-black ml-10 mr-10 pt-4 pb-4  ">
+          <div className="text-black ml-10 mr-10 pt-4 pb-4 text-justify">
           <p>Quiero aportar con mi experiencia y la formación que he desarrollado tanto en el sector privado como en el rol de dirigente. Mi objetivo es aportar y promover  la profesionalización del municipio, desde el Concejo Municipal. 
           </p>
           </div>
@@ -285,7 +286,7 @@ export default function Home() {
           <div className="pt-4 pb-2 relative z-10 flex flex-col items-center justify-center text-center h-full text-white">
             <h1 className="text-3xl font-bold">QUE SE HA LOGRADO HASTA AHORA</h1>
           </div>
-          <div className="ml-12 mr-12   pt-2 pb-4 justify-normal">
+          <div className="ml-12 mr-12   pt-2 pb-4 justify-normal text-justify">
             <p className="">En mi rol como dirigente vecinal, he podido impulsar una serie de actividades deportivas, culturales, de seguridad y actividades para ayudar a vecinas y vecinos.</p>
           </div>
           <div className="relative">   
@@ -298,7 +299,7 @@ export default function Home() {
 
       <section id="contribute" className="">
         <div className="bg-orange-500 opacity-100">
-          <div className="ml-12 mr-12   pt-2 pb-4 justify-normal">
+          <div className="ml-12 mr-12   pt-2 pb-4 justify-normal text-justify">
             <p className="mt-8">Si compartes mi visión de que la política necesita la energía, voluntad y actitud de jóvenes profesionales con vocación, te invito a ser parte de esta historia.</p>
           </div>
           <div className="flex justify-center items-center pt-6 pb-6">
@@ -306,20 +307,9 @@ export default function Home() {
               ¡CONTRIBUYE!
             </button>
           </div>
-          <div className="ml-12 mr-12   pt-2 pb-8 justify-normal">
+          <div className="ml-12 mr-12   pt-2 pb-8 justify-normal text-justify">
             <p>Si confías en mi proyecto y trabajo, te invito a que me apoyes donando a mi candidatura o interactuando en mis redes sociales.</p>
           </div>
-        </div>
-      </section>
-
-      {/* GALERIA */}
-
-      <section id="gallery" className="">
-        <div className="bg-zinc-800 opacity-100">
-          <div className="pt-4 pb-2 relative z-10 flex flex-col items-center justify-center h-full text-white">
-            <h1 className="text-3xl font-bold text-white">GALERIA</h1>
-          </div>
-
         </div>
       </section>
 
@@ -330,7 +320,7 @@ export default function Home() {
           <div className="pt-4 pb-2 relative z-10 flex flex-col items-center justify-center h-full text-white">
             <h1 className="text-3xl font-bold text-orange-500">CONTACTO</h1>
           </div>
-          <div className="ml-10 mr-10   pt-2 pb-8 justify-center flex flex-col items-center text-black">
+          <div className="ml-10 mr-10   pt-2 pb-8 justify-center flex flex-col items-center text-black text-justify">
             <br></br>
             <p>Si quieres conocer más de mi candidatura, ayudar en la entrega de volantes o necesitas saber más, no dudes en escribirme:</p>
             <br></br>
@@ -353,7 +343,7 @@ export default function Home() {
           <div>
             <Carousel slides={carousel5}/>            
           </div>
-          <div className="ml-8 mr-8   pt-2 pb-8 justify-normal">
+          <div className="ml-8 mr-8   pt-2 pb-8 justify-normal text-justify">
             <p>Porque este camino no se camina solo, les agradezco infinitamente a todos los que han dedicado tiempo y energía y en especial a mi equipo, que juntos estamos comprometidos a mejorar la calidad de vida de los centralinos y centralinas.</p>
           </div>
         </div>

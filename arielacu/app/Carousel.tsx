@@ -40,6 +40,7 @@ const Carousel = ({ slides }: CarouselProps) => {
           alt={slides[currentSlide].title}
           fill={true}
           priority
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover"
         />
       </div>
@@ -54,6 +55,7 @@ const Carousel = ({ slides }: CarouselProps) => {
           alt={slides[nextSlide].title}
           fill={true}
           priority
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover"
         />
 

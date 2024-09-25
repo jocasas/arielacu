@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Image from "next/image";
 
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
@@ -33,7 +34,7 @@ export default function ScrollToTop() {
           onClick={scrollToTop}
           className="fixed bottom-4 right-4 bg-blue-500 text-white p-2 rounded-full shadow-lg hover:bg-blue-600 focus:outline-none"
         >
-          ⬆️
+          <Image src="/ISOLOGO_ARIEL_ACUÑA_02.png" alt="" width={25} height={25} className="w-auto h-auto"/>
         </button>
       )}
     </div>
